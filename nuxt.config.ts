@@ -63,7 +63,13 @@ const config: NuxtConfig = {
   /*
    ** Nuxt.js modules
    */
-  modules: [],
+  modules: ['nuxt-fontawesome'],
+  /*
+   ** FontAwesome
+   */
+  fontawesome: {
+    component: 'fa',
+  },
   /*
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
