@@ -76,17 +76,13 @@ export default Vue.extend({
 }
 */
 .container {
-  @apply min-h-screen flex flex-wrap justify-around items-start text-center mx-auto;
+  @apply w-full max-w-sm min-h-screen flex flex-wrap justify-around items-start text-center mx-auto;
 }
 
 .title {
-  @apply block text-yellow-200 text-6xl;
+  @apply block w-full text-yellow-200 text-4xl;
   font-family: 'Candal', 'Quicksand', 'Source Sans Pro', -apple-system,
     BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  /* display: block;
-  font-weight: 300;
-  font-size: 100px;
-  letter-spacing: 1px; */
 }
 
 .subtitle {
