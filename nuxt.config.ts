@@ -27,12 +27,21 @@ const config: NuxtConfig = {
         content: process.env.npm_package_description || '',
       },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        href: 'https://fonts.googleapis.com/css2?family=Candal&display=swap',
+        rel: 'stylesheet',
+      },
+    ],
   },
   /*
    ** Global CSS
    */
   css: [],
+  purgeCSS: {
+    whitelist: ['dark-mode', 'system', 'light-mode'],
+  },
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
