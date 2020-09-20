@@ -11,7 +11,7 @@
           {{ $auth.accountNumber.replace(/(\d)(?=(\d\d\d\d)+(?!\d))/g, '$1-') }}
         </span>
       </p>
-      <p class="mt-4 mx-auto text-center text-2xl text-green-500 font-bold">
+      <p class="mt-4 mx-auto text-center text-xl text-green-500 font-bold">
         BALANCE
       </p>
       <p id="balance" class="mx-auto text-center text-xl text-white">

@@ -183,8 +183,6 @@ export default Vue.extend({
         this.incorrectCount = 0
       }
 
-      // eslint-disable-next-line no-console
-      console.log('account number', this.accountNumbers.join(''))
       if (
         this.$auth.authenticated(this.accountNumbers.join(''), this.password!)
       ) {
@@ -200,8 +198,6 @@ export default Vue.extend({
           this.errors.push('Password is incorrect.')
         }
       }
-      // eslint-disable-next-line no-console
-      console.log('password', this.$auth.password)
     },
     formValidate(): boolean {
       // check account numbers
