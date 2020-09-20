@@ -21,7 +21,7 @@
       </p>
       <div class="w-full mt-2 flex flex-wrap justify-center items-center">
         <p class="w-full mt-4 mb-2 text-center text-sm text-red-500 font-bold">
-          ▼ 口座番号と残高をTwitterでシェアする ▼
+          ▼ 口座番号と残高をTwitterでシェア ▼
         </p>
         <a
           href="https://twitter.com/share?ref_src=twsrc%5Etfw"
