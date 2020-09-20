@@ -2,7 +2,8 @@
   <div class="container">
     <h1 class="title">UNLOCK BANK</h1>
     <form
-      class="w-full max-w-sm p-4 mx-auto bg-opacity-25 bg-gray-600 rounded-b-md"
+      class="mx-auto mt-3 py-4 bg-opacity-25 bg-gray-600 rounded-md"
+      style="width: 96%"
     >
       <p class="p-1 text-xs text-white font-bold">
         Please input your account number and password.
@@ -13,12 +14,14 @@
           <p v-if="idx === 4" :key="'hyphen' + idx" class="hyphen">-</p>
           <div :key="idx" class="flex flex-col items-center">
             <fa
+              :id="`up${8 - idx}`"
               :icon="faCaretUp"
               class="text-lg text-green-200"
               @click="upNumber(idx)"
             />
             <input
-              v-model="accountNumbers[idx]"
+              :id="`digit${8 - idx}`"
+              v-model.number="accountNumbers[idx]"
               class="form-input number-input m-0 block w-10 text-2xl text-black bg-white"
               min="0"
               max="9"
@@ -28,6 +31,7 @@
               :tabindex="idx + 1"
             />
             <fa
+              :id="`down${8 - idx}`"
               :icon="faCaretDown"
               class="text-lg text-green-200"
               @click="downNumber(idx)"
@@ -38,8 +42,9 @@
       <p class="mt-2 text-sm text-green-600 font-bold">PASSWORD</p>
       <div class="w-full flex justify-center items-center">
         <input
+          id="password"
           v-model="password"
-          class="form-input p-0 block w-40 text-4xl text-green-100 bg-black text-center tracking-widest"
+          class="form-input p-0 block w-40 text-4xl text-gray-200 bg-black text-center tracking-widest"
           type="text"
           maxlength="4"
           placeholder="0000"
@@ -48,6 +53,7 @@
       <div class="w-full flex flex-wrap justify-center items-center">
         <input
           v-if="!locked"
+          id="submit"
           class="mt-6 mx-auto p-0 block w-40 rounded-md text-white text-2xl bg-green-700 text-center"
           type="submit"
           value="Enter"
@@ -92,7 +98,7 @@
           <li>暗証番号を3回間違えるとロックされる徹底したセキュリティ</li>
         </ul>
       </div>
-      <div class="relative w-1/2 transform -translate-x-10">
+      <div class="relative w-1/2 mt-2 transform -translate-x-10">
         <img class="object-contain" src="/reception_man.png" alt="説明する男" />
       </div>
       <div class="w-1/2">
@@ -106,8 +112,11 @@
         </p>
       </div>
     </div>
-    <p class="w-full text-xs text-white">※ という設定のパズルゲームです。</p>
-    <p class="w-full mt-2 text-sm text-white font-bold">
+    <p class="w-full text-xs text-gray-600">※ という設定のパズルゲームです。</p>
+    <p class="w-full px-4 text-xs text-gray-600">
+      サーバー通信を用いた制御は行っていないので負荷は考慮せず、お好きにUNLOCKしてください。
+    </p>
+    <p class="w-full mt-4 text-sm text-white font-bold">
       ©︎
       <a class="text-blue-500 underline" href="https://twitter.com/_kinmi"
         >kinmi</a
@@ -119,8 +128,6 @@
 <script lang="ts">
 import Vue from 'vue'
 import { faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons'
-import { Seedrandom } from '../types/seedrandom'
-const seedrandom = require('seedrandom') as Seedrandom
 
 export default Vue.extend({
   data(): {
@@ -179,9 +186,13 @@ export default Vue.extend({
 
       // eslint-disable-next-line no-console
       console.log('account number', this.accountNumbers.join(''))
-      // eslint-disable-next-line no-console
-      console.log('password', this.getPassword(this.accountNumbers.join('')))
-      if (this.getPassword(this.accountNumbers.join('')) !== this.password) {
+      if (
+        this.$auth.authenticated(this.accountNumbers.join(''), this.password!)
+      ) {
+        // passed
+        this.$auth.accountNumber = this.accountNumbers.join('')
+        this.$router.push('/unlocked')
+      } else {
         this.beforeAccountNumber = this.accountNumbers.join('')
         this.incorrectCount = this.incorrectCount + 1
         if (this.incorrectCount >= 3) {
@@ -190,6 +201,8 @@ export default Vue.extend({
           this.errors.push('Password is incorrect.')
         }
       }
+      // eslint-disable-next-line no-console
+      console.log('password', this.$auth.password)
     },
     formValidate(): boolean {
       // check account numbers
@@ -208,25 +221,11 @@ export default Vue.extend({
 
       return !this.errors.length
     },
-    getPassword(seed: String | Number): String {
-      const seedkey = seedrandom('yatottekudasai')
-      const rng = seedrandom(`${seedkey}${seed}`)
-      return String(Math.round(rng() * 10000)).padStart(4, '0')
-    },
   },
 })
 </script>
 
 <style>
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-@apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-*/
-.container {
-  @apply w-full max-w-sm min-h-screen flex flex-wrap justify-end items-start mx-auto text-center;
-}
-
 .number-input::-webkit-outer-spin-button,
 .number-input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -234,16 +233,6 @@ export default Vue.extend({
 }
 .number-input {
   -moz-appearance: textfield;
-}
-
-.title {
-  @apply block w-full h-16 text-white text-4xl bg-green-700;
-  font-family: 'Candal', 'Quicksand', 'Source Sans Pro', -apple-system,
-    BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  /* text-shadow: white 2px 0px, white -2px 0px, white 0px -2px, white 0px 2px,
-    white 2px 2px, white -2px 2px, white 2px -2px, white -2px -2px,
-    white 1px 2px, white -1px 2px, white 1px -2px, white -1px -2px,
-    white 2px 1px, white -2px 1px, white 2px -1px, white -2px -1px; */
 }
 
 .links {

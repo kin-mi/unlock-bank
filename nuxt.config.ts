@@ -17,15 +17,42 @@ const config: NuxtConfig = {
    ** See https://nuxtjs.org/api/configuration-head
    */
   head: {
-    title: 'UNLOCK BANK',
+    title: 'ハッカー専用パズルゲーム | UNLOCK BANK',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || '',
+        content: '貴方はこの銀行をHackできるか・・・',
       },
+      {
+        hid: 'og:site_name',
+        property: 'og:site_name',
+        content: 'ハッカー専用パズルゲーム | UNLOCK BANK',
+      },
+      { hid: 'og:type', property: 'og:type', content: 'website' },
+      {
+        hid: 'og:url',
+        property: 'og:url',
+        content: 'https://unlock-bank.vercel.app/',
+      },
+      {
+        hid: 'og:title',
+        property: 'og:title',
+        content: 'ハッカー専用パズルゲーム | UNLOCK BANK',
+      },
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        content: '貴方はこの銀行をHackできるか・・・',
+      },
+      {
+        hid: 'og:image',
+        property: 'og:image',
+        content: 'https://unlock-bank.vercel.app/unlock_ogp.png',
+      },
+      { name: 'twitter:card', content: 'summary_large_image' },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -39,14 +66,11 @@ const config: NuxtConfig = {
    ** Global CSS
    */
   css: [],
-  purgeCSS: {
-    whitelist: ['dark-mode', 'system', 'light-mode'],
-  },
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: [],
+  plugins: ['~/plugins/auth'],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
