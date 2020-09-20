@@ -24,7 +24,7 @@ const config: NuxtConfig = {
       {
         hid: 'description',
         name: 'description',
-        content: '貴方はこの銀行をHackできるか・・・',
+        content: '貴方はこの銀行をHackできるか。',
       },
       {
         hid: 'og:site_name',
@@ -45,7 +45,7 @@ const config: NuxtConfig = {
       {
         hid: 'og:description',
         property: 'og:description',
-        content: '貴方はこの銀行をHackできるか・・・',
+        content: '貴方はこの銀行をHackできるか。',
       },
       {
         hid: 'og:image',
