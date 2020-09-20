@@ -115,7 +115,25 @@
     <p class="w-full px-4 text-xs text-gray-600">
       サーバー通信を用いた制御は行っていないので負荷は考慮せず、お好きにUNLOCKしてください。
     </p>
-    <p class="w-full mt-4 text-sm text-white font-bold">
+    <div class="w-full mt-2 flex justify-center items-center">
+      <a
+        href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+        class="twitter-share-button mx-auto"
+        data-text="ハッカー専用パズルゲーム「UNLOCK BANK」"
+        data-hashtags="UNLOCK_BANK"
+        data-size="default"
+        data-url="https://unlock-bank.vercel.app/"
+        data-lang="ja"
+        >Tweet</a
+      >
+      <div
+        is="script"
+        async
+        src="https://platform.twitter.com/widgets.js"
+        charset="utf-8"
+      />
+    </div>
+    <p class="w-full mt-3 text-sm text-white font-bold">
       ©︎
       <a class="text-blue-500 underline" href="https://twitter.com/_kinmi"
         >kinmi</a

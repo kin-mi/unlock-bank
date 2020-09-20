@@ -19,6 +19,31 @@
           ¥{{ balance.toLocaleString() }}
         </span>
       </p>
+      <div class="w-full mt-2 flex flex-wrap justify-center items-center">
+        <p class="w-full mt-4 mb-2 text-center text-sm text-red-500 font-bold">
+          ▼ 口座番号と残高をTwitterでシェアする ▼
+        </p>
+        <a
+          href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+          class="twitter-share-button"
+          :data-text="`UNLOCKED!!
+口座番号: ${$auth.accountNumber.replace(/(\d)(?=(\d\d\d\d)+(?!\d))/g, '$1-')}
+預金残高: ¥${balance.toLocaleString()}
+
+ハッカー専用パズルゲーム「UNLOCK BANK」`"
+          data-hashtags="UNLOCK_BANK"
+          data-size="large"
+          data-url="https://unlock-bank.vercel.app/"
+          data-lang="ja"
+          >Tweet</a
+        >
+        <div
+          is="script"
+          async
+          src="https://platform.twitter.com/widgets.js"
+          charset="utf-8"
+        />
+      </div>
     </div>
 
     <p class="w-full mt-4 text-sm text-white font-bold">
