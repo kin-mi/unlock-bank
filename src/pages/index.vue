@@ -2,8 +2,7 @@
   <div class="container">
     <h1 class="title">UNLOCK BANK</h1>
     <form
-      class="mx-auto mt-3 py-4 bg-opacity-25 bg-gray-600 rounded-md"
-      style="width: 96%"
+      class="w-full max-w-sm px-2 py-4 bg-opacity-25 bg-gray-600 rounded-b-md"
     >
       <p class="p-1 text-xs text-white font-bold">
         Please input your account number and password.
