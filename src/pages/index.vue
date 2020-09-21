@@ -32,7 +32,7 @@
               />
 
               <p
-                class="absolute top-0 left-0 m-0 block w-10 text-2xl text-black bg-white border-opacity-100 border rounded py-2 px-3 pointer-events-none cursor-text transform -translate-x-px"
+                class="absolute top-0 left-0 m-0 block w-10 text-2xl text-black bg-white border-opacity-100 border rounded py-2 px-3 pointer-events-none cursor-text overflow-hidden transform -translate-x-px"
                 style="height: 3.4rem"
               >
                 <transition :name="fadeName" mode="out-in">
@@ -324,21 +324,22 @@ export default Vue.extend({
   background: linear-gradient(transparent 60%, theme('colors.red.600') 60%);
 }
 
-.up-down-fade-enter-active,
 .up-down-fade-leave-active,
-.down-up-fade-enter-active,
 .down-up-fade-leave-active {
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease;
+}
+
+.up-down-fade-enter-active,
+.down-up-fade-enter-active {
+  transition: transform 0.15s ease;
 }
 
 .up-down-fade-leave-to,
 .down-up-fade-enter {
-  transform: translateY(-15px);
-  opacity: 0;
+  transform: translateY(-35px);
 }
 .up-down-fade-enter,
 .down-up-fade-leave-to {
-  transform: translateY(15px);
-  opacity: 0;
+  transform: translateY(35px);
 }
 </style>
