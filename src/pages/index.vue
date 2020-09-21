@@ -105,13 +105,14 @@
       <div class="absolute top-0 left-0 w-full pt-4 px-4">
         <h2 class="explain-title">UNLOCK BANKへようこそ！</h2>
         <p class="mt-2 text-white text-sm text-left">
-          当行では<span class="font-bold text-red-500">厳重なセキュリティ</span
+          当行では<span class="font-bold text-red-600">厳重なセキュリティ</span
           >のもと、お客さまの資産を管理させていただいております。
         </p>
         <ul class="mt-1 px-4 list-disc text-white text-sm text-left">
           <li>口座番号と暗証番号による認証システム</li>
           <li>
-            暗証番号を<span class="marker">3回間違えるとロック</span
+            暗証番号を<span class="marker text-gray-400"
+              >3回間違えるとロック</span
             >される、徹底したセキュリティ
           </li>
         </ul>

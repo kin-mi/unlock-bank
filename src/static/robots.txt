@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /unlocked/
+
+Sitemap: https://unlock-bank.vercel.app/sitemap.xml
