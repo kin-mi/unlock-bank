@@ -192,7 +192,7 @@ export default Vue.extend({
   watch: {
     accountNumbersCopy(n: number[], o: number[]) {
       n.forEach((num, idx) => {
-        if (num !== o[idx]) {
+        if (num && num !== o[idx]) {
           const splitNum = String(num).split('')
           if (isNaN(splitNum[0] as any)) {
             this.accountNumbers.splice(idx, 1, Number(splitNum[1]))
