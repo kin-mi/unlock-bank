@@ -20,7 +20,7 @@
             />
             <input
               :id="`digit${8 - idx}`"
-              v-model.number="accountNumbers[idx]"
+              v-model="accountNumbers[idx]"
               class="form-input number-input m-0 block w-10 text-2xl text-black bg-white"
               min="0"
               max="9"
@@ -184,6 +184,33 @@ export default Vue.extend({
           return cnt + 1 <= this.incorrectCount ? '× ' : '- '
         })
         .join('')
+    },
+    accountNumbersCopy(): number[] {
+      return JSON.parse(JSON.stringify(this.accountNumbers))
+    },
+  },
+  watch: {
+    accountNumbersCopy(n: number[], o: number[]) {
+      n.forEach((num, idx) => {
+        if (num !== o[idx]) {
+          const splitNum = String(num).split('')
+          if (isNaN(splitNum[0] as any)) {
+            this.accountNumbers.splice(idx, 1, Number(splitNum[1]))
+          } else if (isNaN(splitNum[1] as any)) {
+            this.accountNumbers.splice(idx, 1, Number(splitNum[0]))
+          } else if (splitNum[0] !== splitNum[1]) {
+            this.accountNumbers.splice(
+              idx,
+              1,
+              splitNum[0] !== String(o[idx])
+                ? Number(splitNum[0])
+                : Number(splitNum[1])
+            )
+          } else {
+            this.accountNumbers.splice(idx, 1, Number(splitNum[0]))
+          }
+        }
+      })
     },
   },
   methods: {

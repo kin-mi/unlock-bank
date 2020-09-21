@@ -108,7 +108,15 @@ const config: NuxtConfig = {
   build: {
     extend(config, { isDev }) {
       if (!isDev) {
-        config?.plugins?.push(new WebpackObfuscator({}))
+        config?.plugins?.push(
+          new WebpackObfuscator({
+            // JavaScript obfuscator のオプション
+            stringArrayEncoding: true,
+            stringArrayThreshold: 1,
+            deadCodeInjection: true,
+            deadCodeInjectionThreshold: 0.2,
+          })
+        )
       }
     },
   },
