@@ -84,9 +84,10 @@
       </div>
     </form>
     <div
-      class="flex flex-wrap w-full max-w-sm pt-4 px-4 mt-4 bg-opacity-25 bg-orange-300 rounded-md"
+      class="relative w-full max-w-sm mt-4 bg-opacity-25 bg-orange-300 rounded-md"
+      style="height: 22rem"
     >
-      <div class="w-full">
+      <div class="absolute top-0 left-0 w-full pt-4 px-4">
         <h2 class="explain-title">UNLOCK BANKへようこそ！</h2>
         <p class="mt-2 text-white text-sm text-left">
           当行では<span class="font-bold text-red-500">厳重なセキュリティ</span
@@ -94,26 +95,31 @@
         </p>
         <ul class="mt-1 px-4 list-disc text-white text-sm text-left">
           <li>口座番号と暗証番号による認証システム</li>
-          <li>暗証番号を3回間違えるとロックされる徹底したセキュリティ</li>
+          <li>
+            暗証番号を<span class="marker">3回間違えるとロック</span
+            >される、徹底したセキュリティ
+          </li>
         </ul>
       </div>
-      <div class="relative w-1/2 mt-2 transform -translate-x-10">
+      <div
+        class="absolute bottom-0 left-0 w-1/2 mt-2 transform -translate-x-10"
+      >
         <img class="object-contain" src="/reception_man.png" alt="説明する男" />
       </div>
-      <div class="w-1/2">
+      <div class="absolute bottom-0 right-0 w-3/5 h-48 pr-2">
+        <p class="mt-2 text-white text-sm text-left">お陰様で口座数は</p>
+        <p class="text-2xl font-bold text-orange-500">100,000,000口</p>
         <p class="mt-2 text-white text-sm text-left">
-          お陰様で口座数は<span class="text-lg font-bold text-orange-500"
-            >100,000,000口</span
-          >に到達し、新規開設の受付は現在停止しております。
+          に到達し、新規口座開設の受付は現在停止しております。
         </p>
-        <p class="mt-2 text-white text-sm text-left">
+        <p class="mt-2 text-white text-lg text-left font-bold">
           安心してご利用ください。
         </p>
       </div>
     </div>
     <p class="w-full text-xs text-gray-600">※ という設定のパズルゲームです。</p>
     <p class="w-full px-4 text-xs text-gray-600">
-      サーバー通信を用いた制御は行っていないので負荷は考慮せず、お好きにUNLOCKしてください。
+      サーバー通信を用いた制御は行っていないので負荷等は気にせず、お好きにUNLOCKしてください。
     </p>
     <div class="w-full mt-2 flex justify-center items-center">
       <a
@@ -260,5 +266,9 @@ export default Vue.extend({
 .explain-title {
   @apply text-2xl font-bold text-gray-200;
   background: linear-gradient(transparent 60%, theme('colors.orange.600') 60%);
+}
+.marker {
+  @apply font-bold;
+  background: linear-gradient(transparent 60%, theme('colors.red.600') 60%);
 }
 </style>
