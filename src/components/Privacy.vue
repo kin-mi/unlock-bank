@@ -26,6 +26,7 @@
           この機能はCookieを無効にすることで収集を拒否することが出来ますので、お使いのブラウザの設定をご確認ください。この規約に関しての詳細は
           <a
             target="_blank"
+            rel="nofollow"
             class="text-blue-500 underline"
             href="https://marketingplatform.google.com/about/analytics/terms/jp/"
             >Googleアナリティクスサービス利用規約<fa :icon="faExternalLinkAlt"
@@ -33,6 +34,7 @@
           のページや
           <a
             target="_blank"
+            rel="nofollow"
             class="text-blue-500 underline"
             href="https://policies.google.com/?hl=ja"
             >Googleポリシーと規約<fa :icon="faExternalLinkAlt"

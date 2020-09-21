@@ -136,7 +136,7 @@
     <p class="w-full px-4 text-xs text-gray-600">
       サーバー通信を用いた制御は行っていないので負荷等は気にせず、お好きにUNLOCKしてください。
     </p>
-    <div class="w-full mt-2 flex justify-center items-center">
+    <div class="w-full mt-2 flex flex-wrap justify-center items-center">
       <a
         href="https://twitter.com/share?ref_src=twsrc%5Etfw"
         class="twitter-share-button mx-auto"
@@ -147,17 +147,28 @@
         data-lang="ja"
         >Tweet</a
       >
-      <div
-        is="script"
+      <component
+        :is="'script'"
         async
         src="https://platform.twitter.com/widgets.js"
         charset="utf-8"
       />
+      <a
+        target="_blank"
+        rel="nofollow"
+        class="w-full mt-1 text-sm text-blue-600 font-bold underline"
+        href="https://twitter.com/search?q=%23UNLOCK_BANK&src=typed_query"
+        >#UNLOCK_BANK</a
+      >
     </div>
     <privacy class="mt-5" />
     <p class="w-full text-sm text-white font-bold">
       ©︎
-      <a class="text-blue-500 underline" href="https://twitter.com/_kinmi"
+      <a
+        target="_blank"
+        rel="nofollow"
+        class="text-blue-500 underline"
+        href="https://twitter.com/_kinmi"
         >kinmi</a
       >
     </p>

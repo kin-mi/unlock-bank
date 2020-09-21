@@ -37,8 +37,8 @@
           data-lang="ja"
           >Tweet</a
         >
-        <div
-          is="script"
+        <component
+          :is="'script'"
           async
           src="https://platform.twitter.com/widgets.js"
           charset="utf-8"
@@ -48,7 +48,11 @@
 
     <p class="w-full mt-4 text-sm text-white font-bold">
       ©︎
-      <a class="text-blue-500 underline" href="https://twitter.com/_kinmi"
+      <a
+        target="_blank"
+        rel="nofollow"
+        class="text-blue-500 underline"
+        href="https://twitter.com/_kinmi"
         >kinmi</a
       >
     </p>
