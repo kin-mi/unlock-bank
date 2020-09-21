@@ -76,9 +76,9 @@ export default Vue.extend({
     balance(): number {
       if (!this.$auth.accountNumber) return 0
       const rng = seedrandom(this.$auth.accountNumber)
-      const base = rng() * 1000000
-      const coef = rng() * 100
-      return Math.round(Math.round(base) * (Math.round(coef) / 10))
+      const base = Math.round(rng() * 100000000) // 1 ~ 99,999,999
+      const coef = Math.round(rng() * 10) / 10 // 0 ~ 1.0
+      return Math.round(base * coef)
     },
   },
 })
