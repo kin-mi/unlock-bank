@@ -83,6 +83,12 @@ const config: NuxtConfig = {
     '@nuxt/typescript-build',
     // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
     '@nuxtjs/tailwindcss',
+    [
+      '@nuxtjs/google-analytics',
+      {
+        id: 'UA-178460555-1',
+      },
+    ],
   ],
   /*
    ** Nuxt.js modules

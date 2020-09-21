@@ -133,7 +133,8 @@
         charset="utf-8"
       />
     </div>
-    <p class="w-full mt-3 text-sm text-white font-bold">
+    <privacy class="mt-5" />
+    <p class="w-full text-sm text-white font-bold">
       ©︎
       <a class="text-blue-500 underline" href="https://twitter.com/_kinmi"
         >kinmi</a
