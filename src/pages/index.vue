@@ -18,17 +18,32 @@
               class="text-lg text-green-200"
               @click="upNumber(idx)"
             />
-            <input
-              :id="`digit${8 - idx}`"
-              v-model="accountNumbers[idx]"
-              class="form-input number-input m-0 block w-10 text-2xl text-black bg-white"
-              min="0"
-              max="9"
-              maxlength="1"
-              type="number"
-              placeholder="0"
-              :tabindex="idx + 1"
-            />
+            <div class="relative m-0 block w-10" style="height: 3.4rem">
+              <input
+                :id="`digit${8 - idx}`"
+                v-model="accountNumbers[idx]"
+                class="form-input number-input absolute top-0 left-0 m-0 block w-10 text-2xl text-black bg-white"
+                min="0"
+                max="9"
+                maxlength="1"
+                type="number"
+                placeholder="0"
+                :tabindex="idx + 1"
+              />
+
+              <p
+                class="absolute top-0 left-0 m-0 block w-10 text-2xl text-black bg-white border-opacity-100 border rounded py-2 px-3 pointer-events-none cursor-text transform -translate-x-px"
+                style="height: 3.4rem"
+              >
+                <transition :name="fadeName" mode="out-in">
+                  <span
+                    :key="accountNumbers[idx]"
+                    class="block w-full h-full"
+                    >{{ accountNumbers[idx] }}</span
+                  >
+                </transition>
+              </p>
+            </div>
             <fa
               :id="`down${8 - idx}`"
               :icon="faCaretDown"
@@ -161,6 +176,7 @@ export default Vue.extend({
     incorrectCount: number
     errors: string[]
     locked: boolean
+    fadeName: string
   } {
     return {
       accountNumbers: Array(8).fill(0),
@@ -169,6 +185,7 @@ export default Vue.extend({
       incorrectCount: 0,
       errors: [],
       locked: false,
+      fadeName: '',
     }
   },
   computed: {
@@ -215,18 +232,26 @@ export default Vue.extend({
   },
   methods: {
     upNumber(idx: number): void {
+      this.fadeName = 'up-down-fade'
       if (this.accountNumbers[idx] >= 9) {
         this.accountNumbers.splice(idx, 1, 0)
       } else {
         this.accountNumbers.splice(idx, 1, this.accountNumbers[idx] + 1)
       }
+      setTimeout(() => {
+        this.fadeName = ''
+      }, 400)
     },
     downNumber(idx: number): void {
+      this.fadeName = 'down-up-fade'
       if (this.accountNumbers[idx] <= 0) {
         this.accountNumbers.splice(idx, 1, 9)
       } else {
         this.accountNumbers.splice(idx, 1, this.accountNumbers[idx] - 1)
       }
+      setTimeout(() => {
+        this.fadeName = ''
+      }, 400)
     },
     enter(): void {
       this.errors.splice(0, this.errors.length)
@@ -297,5 +322,23 @@ export default Vue.extend({
 .marker {
   @apply font-bold;
   background: linear-gradient(transparent 60%, theme('colors.red.600') 60%);
+}
+
+.up-down-fade-enter-active,
+.up-down-fade-leave-active,
+.down-up-fade-enter-active,
+.down-up-fade-leave-active {
+  transition: all 0.3s ease;
+}
+
+.up-down-fade-leave-to,
+.down-up-fade-enter {
+  transform: translateY(-15px);
+  opacity: 0;
+}
+.up-down-fade-enter,
+.down-up-fade-leave-to {
+  transform: translateY(15px);
+  opacity: 0;
 }
 </style>
