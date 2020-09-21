@@ -52,7 +52,7 @@ const AuthPlugin: Plugin = (_ctx, inject) => {
     const seedkey = seedrandom('yatottekudasai')
     const rng = seedrandom(`${seedkey}${seed}`)
     const _pass = String(Math.round(rng() * 10000)).padStart(4, '0')
-    if (seed === '11451419') {
+    if (seed === '11451419' && password === '1919') {
       // eslint-disable-next-line no-console
       console.log(_pass)
     }
