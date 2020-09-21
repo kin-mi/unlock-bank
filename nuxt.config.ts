@@ -1,4 +1,5 @@
 import { NuxtConfig } from '@nuxt/types'
+const WebpackObfuscator = require('webpack-obfuscator')
 
 const config: NuxtConfig = {
   srcDir: 'src',
@@ -104,7 +105,13 @@ const config: NuxtConfig = {
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
    */
-  build: {},
+  build: {
+    extend(config, { isDev }) {
+      if (!isDev) {
+        config?.plugins?.push(new WebpackObfuscator({}))
+      }
+    },
+  },
 }
 
 export default config
