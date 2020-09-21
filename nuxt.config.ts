@@ -112,6 +112,7 @@ const config: NuxtConfig = {
           new WebpackObfuscator({
             // JavaScript obfuscator のオプション
             stringArray: true,
+            stringArrayEncoding: 'base64',
             stringArrayThreshold: 1,
             deadCodeInjection: true,
             deadCodeInjectionThreshold: 0.2,
