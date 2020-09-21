@@ -111,7 +111,7 @@ const config: NuxtConfig = {
         config?.plugins?.push(
           new WebpackObfuscator({
             // JavaScript obfuscator のオプション
-            stringArrayEncoding: true,
+            stringArray: true,
             stringArrayThreshold: 1,
             deadCodeInjection: true,
             deadCodeInjectionThreshold: 0.2,
