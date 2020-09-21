@@ -137,7 +137,9 @@
     <p class="w-full px-4 text-xs text-gray-600">
       サーバー通信を用いた制御は行っていないので負荷等は気にせず、お好きにUNLOCKしてください。
     </p>
-    <div class="w-full mt-2 flex flex-wrap justify-center items-center">
+    <div
+      class="w-full mt-2 py-3 flex flex-wrap justify-center items-center bg-blue-700 bg-opacity-25 rounded-md"
+    >
       <a
         href="https://twitter.com/share?ref_src=twsrc%5Etfw"
         class="twitter-share-button mx-auto"
